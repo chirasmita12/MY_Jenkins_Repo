@@ -56,4 +56,4 @@ node {
    //   sh "docker tag ${dockerImageName} ${dockerImageTag}"
  //     sh "docker push ${dockerImageTag}"
     }//
-}//
+}
