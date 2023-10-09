@@ -7,9 +7,9 @@ node {
   //  def dockerImage
     // ip address of the docker private repository(nexus)
     
-    def dockerRepoUrl = "localhost:8083"
-    def dockerImageName = "hello-world-java"
-    def dockerImageTag = "${dockerRepoUrl}/${dockerImageName}:${env.BUILD_NUMBER}"
+    //def dockerRepoUrl = "localhost:8083"
+    //def dockerImageName = "hello-world-java"
+    //def dockerImageTag = "${dockerRepoUrl}/${dockerImageName}:${env.BUILD_NUMBER}"
     
     stage('Clone Repo') { // for display purposes
       // Get some code from a GitHub repository
@@ -37,23 +37,23 @@ node {
       })
     }
 		
-    stage('Build Docker Image') {
+   // stage('Build Docker Image') {
       // build docker image
-      sh "whoami"
+   //   sh "whoami"
       //sh "ls -all /var/run/docker.sock"
-      sh "mv ./target/hello*.jar ./data" 
+  //    sh "mv ./target/hello*.jar ./data" 
       
-      dockerImage = docker.build("hello-world-java")
-    }
+   //   dockerImage = docker.build("hello-world-java")
+ //   }
    
-    stage('Deploy Docker Image'){
+  //  stage('Deploy Docker Image'){
       
       // deploy docker image to nexus
 
-      echo "Docker Image Tag Name: ${dockerImageTag}"
+     // echo "Docker Image Tag Name: ${dockerImageTag}"
 
-      sh "docker login -u admin -p admin123 ${dockerRepoUrl}"
-      sh "docker tag ${dockerImageName} ${dockerImageTag}"
-      sh "docker push ${dockerImageTag}"
-    }
-}
+    //  sh "docker login -u admin -p admin123 ${dockerRepoUrl}"
+   //   sh "docker tag ${dockerImageName} ${dockerImageTag}"
+ //     sh "docker push ${dockerImageTag}"
+    }//
+}//
